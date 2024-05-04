@@ -4,6 +4,7 @@ nav {
     position: fixed;
     top: 0;
     background-color: rgb(50, 50, 50);
+    z-index: 2;
 }
 
 #logo {
@@ -84,7 +85,14 @@ nav {
     height: 70px;
 }
 
-@media (max-width: 768px) {
+#footer {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    color: rgb(175, 175, 175);
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
 
     #logo {
         left: calc(50% - 25px);
