@@ -55,4 +55,36 @@ app.listen(port, host, () => {
 
   });
 
+  app.get('/hii', (req, res) => {
+    //state = req.query['state'];
+    //console.log(state);
+
+
+    let db = new sqlite3.Database('genesis.db', sqlite3.OPEN_READWRITE, (err) => {
+    if (err) {
+      console.error(err.message);
+    }
+    console.log('Connected to the database.');
+  });
+
+  let sql = `SELECT SchoolName, IncidentID From Incidents`;
+
+    db.all(sql, (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        rows.forEach((row) => {
+            //console.log(row.nams);
+            //res.write(row.nams row.strength)
+        });
+
+        res.json(rows);
+
+    
+    });
+    
+
+
+  });
+
   
