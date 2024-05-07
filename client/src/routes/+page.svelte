@@ -27,33 +27,42 @@
 </div>
 <div id="incidents-card" class="card" bind:clientWidth={width}>
     <h2>Recent Incidents</h2>
-    <table id="incidents-header">
-        <tr class="row">
+    <div id="incidents-header">
+        <div class="row">
+            
             {#if width > 1024}
-                <h3 id="incidents-type-header" class="incidents-subtitle">Type</h3>
-                <h3 class="incidents-subtitle incidents-students ">Students</h3>
+                <h3 class="incidents-subtitle-small incidents-small">Date</h3>
+                <h3 class="incidents-subtitle-small incidents-small">Type</h3>
+                <h3 class="incidents-subtitle-large incidents-large">School</h3> 
+                <h3 class="incidents-subtitle-large incidents-large">Students</h3>
+            {:else}
+                <h3 class="incidents-subtitle-large incidents-large">Date</h3>
+                <h3 class="incidents-subtitle-large incidents-large">School</h3> 
             {/if}
-            <h3 class="incidents-subtitle incidents-date">Date</h3>
-            <h3 class="incidents-subtitle incidents-school">School</h3> 
-        </tr>
-    </table>
+        </div>
+    </div>
     <div id="incidents-table" class="table">
         {#each incidents as incident, i}
             <div class={"row" + (i % 2 === 0 ? " row-dark":" row-light")}>
                 {#if width > 1024}
-                    <p class="incidents-date">{incident.date}</p>
-                    <h4 class={"incidents-type incident-type " + incident.type.toLowerCase()} 
-                        style={!["Cheating", "Cutting", "Fighting"].includes(incident.type) ? "background-color: rgb(255, 0, 255)":""}>
-                        {incident.type}
-                    </h4>
-                    <p class="incidents-students">{incident.students}</p>
+                    <p class="incidents-small">{incident.date}</p>
+                    <div class="incidents-small">
+                        <h4 class={"incidents-type incident-type " + incident.type.toLowerCase()} 
+                            style={!["Cheating", "Cutting", "Fighting"].includes(incident.type) ? "background-color: rgb(255, 0, 255)":""}>
+                            {incident.type}
+                        </h4>
+                    </div>
+                    <p class="incidents-large">{incident.school}</p>
+                    <p class="incidents-large">{incident.students}</p>
                 {:else}
-                    <p class={"incidents-type incident-type " + incident.type.toLowerCase()}
-                        style={!["Cheating", "Cutting", "Fighting"].includes(incident.type) ? "background-color: rgb(255, 0, 255)":""}>
-                        {incident.date}
-                    </p>
+                    <div class="incidents-small">
+                        <p class={"incidents-type incident-type " + incident.type.toLowerCase()}
+                            style={!["Cheating", "Cutting", "Fighting"].includes(incident.type) ? "background-color: rgb(255, 0, 255)":""}>
+                            {incident.date}
+                        </p>
+                    </div>
+                    <p class="incidents-large">{incident.school}</p>
                 {/if}
-                <p class="incidents-school">{incident.school}</p>
             </div>
         {/each} 
     </div>
