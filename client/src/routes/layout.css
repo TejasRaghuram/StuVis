@@ -1,0 +1,178 @@
+nav {
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    background-color: rgb(50, 50, 50);
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+#links {
+    position: absolute;
+    left: 70px;
+}
+
+.link {
+    width: 100px;
+    height: 32px;
+    margin-left: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.25s;
+}
+
+.selected {
+    background-color: rgba(255, 255, 255, 0.15);
+    font-weight: bold;
+}
+
+.unselected { 
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.unselected:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+#logout {
+    width: 125px;
+    height: 40px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: white;
+    background-color: rgb(220, 170, 0);
+    font-size: 18px;
+    font-weight: bold;
+    border-style: hidden;
+    border-radius: 5px;
+}
+
+#divider {
+    width: 2px;
+    height: 60px;
+    position: absolute;
+    left: 70px;
+    top: 5px;
+    background-color: rgb(80, 80, 80);
+    border-radius: 1px;
+    display: inline-block;
+}
+
+#hamburger {
+    opacity: 0;
+}
+
+#logout-icon {
+    opacity: 0;
+}
+
+#spacing {
+    height: 70px;
+}
+
+@media (max-width: 768px) {
+
+    #logo {
+        left: calc(50% - 25px);
+    }
+
+    #links {
+        width: 250px;
+        height: 100vh;
+        position: fixed;
+        left: -250px;
+        padding-top: 60px;
+        background-color: black;
+        transition: transform 0.5s;
+    }
+
+    .open {
+        transform: translateX(250px);
+    }
+    
+    .closed {
+        transform: none;
+    }
+
+    .link {
+        width: 220px;
+        display: block;
+    }
+
+    #hamburger {
+        width: 40px;
+        position: absolute;
+        left: 17.5px;
+        top: 17.5px;
+        padding: 0;
+        background-color: transparent;
+        border-style: hidden;
+        opacity: 1;
+    }
+    
+    #hamburger:hover {
+        cursor: pointer;
+    }
+    
+    .hamburger-bar {
+        width: 100%;
+        height: 5px;
+        background-color: white;
+        border-radius: 2.5px;
+        transition: 0.5s;
+    }
+    
+    #hamburger-top-closed {
+        margin-top: 0;
+    }
+    
+    #hamburger-top-open {
+        transform: translateY(15px) rotateZ(45deg);
+    }
+    
+    #hamburger-middle-closed {
+        margin-top: 10px;
+    }
+    
+    #hamburger-middle-open {
+        opacity: 0;
+    }
+    
+    #hamburger-bottom-closed {
+        margin-top: 10px;
+    }
+    
+    #hamburger-bottom-open {
+        transform: translateY(5px) rotateZ(-45deg);
+    }
+
+    #logout {
+        width: 50px;
+        height: 50px;
+        right: 10px;
+        top: 10px;
+    }
+
+    #logout-icon {
+        width: 30px;
+        height: 30px;
+        margin-top: 5px;
+        margin-left: 2.5px;
+        opacity: 1;
+    }
+
+}

@@ -1,1 +1,1 @@
-trendss
+trends
