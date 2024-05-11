@@ -1,0 +1,1 @@
+SELECT SchoolName, IncidentID From Incidents

@@ -7,8 +7,8 @@
   const marginRight = 0; // right margin, in pixels
   const marginBottom = 30; // bottom margin, in pixels
   const marginLeft = 50; // left margin, in pixels
-  const width = 600; // width of the chart, in pixels
-  const height = 300; // height of the chart, in pixels
+  const width = 900; // width of the chart, in pixels
+  const height = 600; // height of the chart, in pixels
   const xPadding = 0.2; // padding between bars
   const yFormat = ''; // unit to display on y-axis ticks
   const yLabel = 'Incidents'; // label for the y-axis
@@ -19,8 +19,14 @@
 
   // Sort data by default, ascending, or descending
   let sortedData = data;
+
+
+  const x = Object.keys(data[0])[0]; // given d in data, returns the (ordinal) x-value
+  const y = Object.keys(data[0])[1]; // given d in data, returns the (quantitative) y-value
+
+
   $: reactiveShowSort = (input) => {
-    console.log("HIIII");
+    
     console.log("Sorting method selected:", input);
     if (input === 1) {
       return (sortedData = data.sort(
@@ -35,9 +41,7 @@
     }
   };
 
-  // Compute values X and Y value of Arrays
-  const x = Object.keys(data[0])[0]; // given d in data, returns the (ordinal) x-value
-  const y = Object.keys(data[0])[1]; // given d in data, returns the (quantitative) y-value
+  
   $: reactiveXVals = sortedData.map((el) => el[x]);
   $: reactiveYVals = sortedData.map((el) => (el[y] + .0000000001 * Math.random()));
 
@@ -58,7 +62,7 @@
 <div class="chart-container" dir="auto">
   <div>
     
-    <select class="dropdown" on:change={reactiveShowSort(this.selectedIndex)}>
+    <select class="dropdown" on:change={event => reactiveShowSort(event.target.selectedIndex)}>
       <option disabled selected value> ---Sorting Method--- </option>
       <option value="1">Default</option>
       <option value="2">{y}, Ascending</option>
