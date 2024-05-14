@@ -1,4 +1,4 @@
-<h1 id="title">About StuVis</h1>
+<h1 id="about">About StuVis</h1>
 <h2 class="subtitle">The Goal</h2>
 <p class="content">The goal of creating a student StuVis for South Brunswick School District is to comprehensively analyze behavioral trends among students, aiming to identify underlying issues, their locations, and root causes. By utilizing advanced data analytics and visualization tools, the application will provide educators and administrators with clear insights into student behavior patterns. This will enable timely and targeted interventions, fostering a more supportive and effective educational environment. Ultimately, the application aims to enhance student well-being and academic performance by addressing behavioral issues proactively and efficiently.</p>
 <div class="image"/>
