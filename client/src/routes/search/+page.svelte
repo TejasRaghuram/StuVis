@@ -1,4 +1,4 @@
-<h1 id="greeting">Hello, [User]!</h1>
+<h1 id="greeting">Hello, Admin!</h1>
 <div id="messages-card">
     {#if chat.length > 0}
         <div id="messages-content">
@@ -26,14 +26,14 @@
     {:else}
         <div id="prompt-starters">
             <button class="prompt-starter" on:click={() => {
-                document.getElementById("prompt").value = "Get me information on student...";
-            }}>Get me information on student ...</button>
+                document.getElementById("prompt").value = "Return the races of students with 10 absences";
+            }}>Return the races of students with 10 absences</button>
             <button class="prompt-starter" on:click={() => {
-                document.getElementById("prompt").value = "What was the last cheating incident at ...";
-            }}>What was the last cheating incident at ...</button>
+                document.getElementById("prompt").value = "Return the grade level of all students that have ISS suspensions";
+            }}>Return the grade level of all students that have ISS suspensions</button>
             <button class="prompt-starter" on:click={() => {
-                document.getElementById("prompt").value = "Which school has had the most fighting issues over the past 3 months?";
-            }}>Which school has had the most fighting issues over the past 3 months?</button>
+                document.getElementById("prompt").value = "Return the race of people who played a sport";
+            }}>Return the race of people who played a sport</button>
             <button class="prompt-starter" on:click={() => {
                 document.getElementById("prompt").value = "Who has cut class the most at ...";
             }}>Who has cut class the most at ...</button>

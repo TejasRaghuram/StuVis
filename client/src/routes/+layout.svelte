@@ -38,7 +38,9 @@
     </div>
     {#if width > 1024}
         <div id="divider"/>
-        <button id="logout">Log Out</button>
+        <button id="logout" on:click={() => {
+            window.location.href = 'https://www.sbschools.org/';
+        }}>Return</button>
     {:else}
         <button id="hamburger" on:click={() => {open = !open}}>
             <div id={open ? "hamburger-top-open":"hamburger-top-closed"} class="hamburger-bar"/>

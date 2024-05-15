@@ -66,7 +66,7 @@
 <div class="chart-container" dir="auto">
   <div>
     
-    <select class="dropdown" on:change={event => reactiveShowSort(event.target.selectedIndex)}>
+    <select class="dropdown" style="position: absolute;" on:change={event => reactiveShowSort(event.target.selectedIndex)}>
       <option disabled selected value> ---Sorting Method--- </option>
       <option value="1">Default</option>
       <option value="2">{y}, Ascending</option>

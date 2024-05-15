@@ -1,4 +1,4 @@
-<h1 id="welcome">Welcome, {user}</h1>
+<h1 id="welcome">Welcome, Admin</h1>
 <div id="small-cards">
     <div id="ratings-card" class="card">
         <h2>School Severity Ratings</h2>
@@ -83,103 +83,103 @@
 
     let schools = [
         {
-            name: '[School]',
-            cheating: '[X]',
-            cutting: '[X]',
-            fighting: '[X]'
+            name: 'South Brunswick High School',
+            cheating: '76',
+            cutting: '98',
+            fighting: '43'
         },
         {
-            name: '[School]',
-            cheating: '[X]',
-            cutting: '[X]',
-            fighting: '[X]'
+            name: 'Crossroads North Middle School',
+            cheating: '56',
+            cutting: '43',
+            fighting: '67'
         },
         {
-            name: '[School]',
-            cheating: '[X]',
-            cutting: '[X]',
-            fighting: '[X]'
+            name: 'Crossroads South Middle School',
+            cheating: '43',
+            cutting: '34',
+            fighting: '71'
         },
         {
-            name: '[School]',
-            cheating: '[X]',
-            cutting: '[X]',
-            fighting: '[X]'
+            name: 'Greenbrook Elementary School',
+            cheating: '12',
+            cutting: '60',
+            fighting: '32'
         },
         {
-            name: '[School]',
-            cheating: '[X]',
-            cutting: '[X]',
-            fighting: '[X]'
+            name: 'Brunswick Acres Elementary School',
+            cheating: '21',
+            cutting: '65',
+            fighting: '28'
         },
         {
-            name: '[School]',
-            cheating: '[X]',
-            cutting: '[X]',
-            fighting: '[X]'
+            name: 'Brooks Crossing Elementary School',
+            cheating: '9',
+            cutting: '71',
+            fighting: '21'
         },
         {
-            name: '[School]',
-            cheating: '[X]',
-            cutting: '[X]',
-            fighting: '[X]'
+            name: 'Monmouth Junction Elementary School',
+            cheating: '8',
+            cutting: '58',
+            fighting: '20'
         },
         {
-            name: '[School]',
-            cheating: '[X]',
-            cutting: '[X]',
-            fighting: '[X]'
+            name: 'Constable Elementary School',
+            cheating: '2',
+            cutting: '51',
+            fighting: '17'
         }
     ];
 
     let incidents = [
         {
-            date: '[Date]',
-            type: '[Type]',
-            school: '[School]',
-            students: '[Students]'
+            date: '2024-05-08',
+            type: 'Cheating',
+            school: 'Indian Fields and Dayton',
+            students: 'Michael White, Nancy Black'
         },
         {
-            date: '[Date]',
-            type: '[Type]',
-            school: '[School]',
-            students: '[Students]'
+            date: '2024-05-07',
+            type: 'Fighting',
+            school: 'Greenbrook',
+            students: 'Karl Orange, Laura Brown'
         },
         {
-            date: '[Date]',
-            type: '[Type]',
-            school: '[School]',
-            students: '[Students]'
+            date: '2024-05-06',
+            type: 'Cutting',
+            school: 'Constable',
+            students: 'Ian Red, Jessica Violet'
         },
         {
-            date: '[Date]',
-            type: '[Type]',
-            school: '[School]',
-            students: '[Students]'
+            date: '2024-05-05',
+            type: 'Cheating',
+            school: 'Cambridge',
+            students: 'George Blue, Hannah Pink'
         },
         {
-            date: '[Date]',
-            type: '[Type]',
-            school: '[School]',
-            students: '[Students]'
+            date: '2024-05-04',
+            type: 'Fighting',
+            school: 'Brooks Crossing and Deans',
+            students: 'David Grey, Fiona Yellow'
         },
         {
-            date: '[Date]',
-            type: '[Type]',
-            school: '[School]',
-            students: '[Students]'
+            date: '2024-05-03',
+            type: 'Cutting',
+            school: 'Brunswick Acres',
+            students: 'Charlie Black, Eve Green'
         },
         {
-            date: '[Date]',
-            type: '[Type]',
-            school: '[School]',
-            students: '[Students]'
+            date: '2024-05-02',
+            type: 'Cheating',
+            school: 'Crossroads Middle School',
+            students: 'Alice Brown, Bob White'
         },
         {
-            date: '[Date]',
-            type: '[Type]',
-            school: '[School]',
-            students: '[Students]'
+            date: '2024-05-01',
+            type: 'Fighting',
+            school: 'South Brunswick High School',
+            students: 'John Doe, Jane Smith'
         }
     ];
 
