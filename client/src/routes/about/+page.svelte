@@ -5,6 +5,8 @@ about
     let dataBasePromptText = "return the race of all students with more than 10 absences"
     let whatGraphYouWant = "dounut chart"
 
+    import Percentgauge from './percentgauge.svelte';
+
 
 
     const APIKEY = "AIzaSyB5RcABqORxMeiTvbt4IETFLPM9hEqQNvQ"
@@ -27,6 +29,9 @@ about
     let line = false;
     let scatter = false;
     let dounut = false;
+    let per = false;
+
+    let presentToShow = 0;
 
     let responseText;
 
@@ -40,7 +45,7 @@ about
         let prompt = "Given a database with a table named Student with the following columns, ALL OF WHICH SHOULD BE ESCAPED WITH SQUARE BRACKETS, DO NOT MAKE UP YOUR OWN columns, return ONLY a SQLITE query that is all on one line to " + dataBasePromptText + " in a way where the data can be directly put in a " + whatGraphYouWant + " SchoolYear StudentID LastName FirstName EnrollmentStatus SchoolCode GradeLevel CurrentProgramTypeCode CalculatedRace EthnicityPrimaryCode EthnicityPrimary EthnicityStateCodes RaceCodesAsString RaceHispanic RaceAmericanIndian RaceAsian RaceBlack RacePacific RaceWhite FreeOrReducedLunch EconomicallyDisadvantaged GiftedTalented BasicSkillProgramCodesAsString ELL:IsActive ELL:LEPCode ELL:FormerELL ELL:ParentRefused ELL:LEPStartDate ELL:LEPExitDate SE:HasActiveIEP SE:HasActiveIEPOrRelatedService SE:HasActiveRelatedService SE:SpecialEdFlag SE:SelfContained SE:SpecEdStatus SE:SpecEdStatusCode SE:HasReferralInProcess Residential:Area/Neighborhood Residential:StreetName Activity:ParticipatedinSport Activity:ParticipatedinClub Conduct:HasDetentions Conduct:HasSuspensions Conduct:HasISSSuspensions Conduct:HasOSSSuspensions Conduct:HasOtherActions Grades:OnD/FList(FG) Att:Has09DayAbsLtr Att:Has15DayAbsLtr Att:Has04DayUxAbsLtr Att:Has08DayUxAbsLtr Att:Has10DayUxAbsLtr (Most of the previous were stored at 'Y' or 'N')";
         if(line || scatter)
         {
-            prompt = "Given a database with a table named Incidents with the following columns, ALL OF WHICH SHOULD BE ESCAPED WITH SQUARE BRACKETS, DO NOT MAKE UP YOUR OWN columns, SchoolName TeacherName StudentName IncidentName Severity IncidentID Date... return ONLY a SQLITE query that is all on one line to " + dataBasePromptText + " in a way where the data can be directly put in a " + whatGraphYouWant + ". In a line or scatter plot, the value of each data point must be an integer representing the order";
+            prompt = "Given a database with a table named Incidents with the following columns, ALL OF WHICH SHOULD BE ESCAPED WITH SQUARE BRACKETS, DO NOT MAKE UP YOUR OWN columns, SchoolName TeacherName StudentName IncidentName Severity IncidentID Date... return ONLY a SQLITE query that is all on one line to " + dataBasePromptText + " in a way where the data can be directly put in a " + whatGraphYouWant + ".";
         }
 
         const result = await model.generateContent(prompt);
@@ -61,14 +66,29 @@ about
         const items = await response1.json();
         
         console.log(items);
+        
+        if(items.length == 0)
+        {
+            console.log("FAIL PLEASE REWORD YOUR PROMPT");
+            return;
+        }
 
 
         const model1 = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest"});
 
-        const prompt1 = "Format the following JSON object so it can be directly put in a D3.js " + whatGraphYouWant +". Return ONLY a JSON Object : " + JSON.stringify(items);
+        const prompt1 = "Format the following JSON object so it can be directly put in a D3.js " + whatGraphYouWant +". Return ONLY a JSON Object with: " + JSON.stringify(items);
         const result1 = await model1.generateContent(prompt1);
         const response2 = await result1.response;
         text = response2.text();
+        
+        text = text.replace("sql", "");
+        text = text.replace("json", "");
+        text = text.replaceAll("```", "");
+        text = text.replaceAll("`", "");
+        text = text.replaceAll("\n", "");
+
+        console.log(text);
+
         text = text.split('[').pop().split(']')[0];
         text = '[' + text + ']';
         console.log(JSON.parse(text));
@@ -123,6 +143,11 @@ about
 	Scatter Chart
 </label>
 
+<label>
+	<input type="checkbox" bind:checked={per} />
+	Percent Gauge
+</label>
+
 
 <p>{message}</p>
 <p>{JSON.stringify(responseText)}</p>
@@ -140,6 +165,9 @@ about
     {/if}
     {#if dounut}
         <DonutChart data={responseText}></DonutChart>
+    {/if}
+    {#if per}
+        <Percentgauge data={30}></Percentgauge>
     {/if}
     <!--
     {#if line}
