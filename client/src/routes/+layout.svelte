@@ -1,6 +1,6 @@
 <nav bind:clientWidth={width}>
     <img id="logo" src={logo} alt=""/>
-    <div id="links" class={width <= 768 ? (open ? "open":"closed"):""}>
+    <div id="links" class={width <= 1024 ? (open ? "open":"closed"):""}>
         {#key current}
             <a class={"link" + (current === "" ? " selected":" unselected")} 
                 on:click={() => {
@@ -36,7 +36,7 @@
             </a>
         {/key}
     </div>
-    {#if width > 768}
+    {#if width > 1024}
         <div id="divider"/>
         <button id="logout">Log Out</button>
     {:else}
@@ -53,6 +53,8 @@
 <div id="spacing"/>
 
 <slot />
+
+<p id="footer">South Brunswick School District, 2024</p>
 
 <script>
 

@@ -1,0 +1,256 @@
+#welcome {
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.card {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgb(150, 150, 150);
+}
+
+#small-cards {
+    width: calc(100% - 80px);
+    aspect-ratio: 4;
+    margin-left: 40px;
+    margin-top: 20px;
+    display: flex;
+}
+
+.table {
+    width: 100%;
+    height: calc(100% - 85px);
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(150, 150, 150);
+    border-spacing: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.row {
+    width: 100%;
+    height: 50px;
+    position: relative;
+}
+
+.row-dark {
+    background-color: rgb(230, 230, 230);
+}
+
+.row-light {
+    background-color: white;
+}
+
+#ratings-card {
+    flex: 1;
+}
+
+#ratings-key {
+    position: relative;
+    right: 5px;
+}
+
+.incident-type {
+    width: 100px;
+    height: 24px;
+    margin-left: 5px;
+    padding-top: 6px;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.cheating {
+    background-color: rgb(100, 200, 100);
+}
+
+.cutting {
+    background-color: rgb(50, 150, 200);
+}
+
+.fighting {
+    background-color: rgb(200, 100, 100);
+}
+
+#ratings-table {
+    margin-top: 5px;
+}
+
+.ratings-name {
+    position: relative;
+    left: 20px;
+    top: 15px;
+}
+
+#ratings {
+    position: relative;
+    left: calc(100% - 120px);
+    bottom: 8px;
+}
+
+.rating {
+    width: 30px;
+    height: 25px;
+    margin-left: 5px;
+    padding-top: 5px;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#graph-card {
+    margin-left: 30px;
+    flex: 1;
+}
+
+#graph {
+    width: 100%;
+    height: calc(100% - 50px);
+    background-color: rgb(255, 0, 255);
+}
+
+#incidents-card {
+    width: calc(100% - 130px);
+    aspect-ratio: 3;
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+#incidents-header {
+    width: 100%;
+    height: 44px;
+    padding-top: 6px;
+    background-color: black;
+    color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(150, 150, 150);
+    border-spacing: none;
+    border-bottom: none;
+}
+
+#incidents-table {
+    border-top: none;
+}
+
+.incidents-small {
+    width: calc(15% - 20px);
+    padding-left: 20px;
+    position: relative;
+    top: 10px;
+    display: inline-block;
+}
+
+.incidents-large {
+    width: calc(30%  - 20px);
+    padding-left: 20px;
+    position: relative;
+    top: 10px;
+    display: inline-block;
+}
+
+.incidents-subtitle-small {
+    width: calc(0.15*(100% - 5px) - 20px);
+    top: 6px;
+}
+
+.incidents-subtitle-large {
+    width: calc(0.30*(100% - 5px)  - 20px);
+    top: 6px;
+}
+
+.incidents-type {
+    margin-left: 0;
+}
+
+@media (max-width: 1024px) {
+
+    #welcome {
+        margin-left: 30px;
+    }
+
+    .card {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #small-cards {
+        width: 100%;
+        aspect-ratio: initial;
+        margin: 0;
+        display: block;
+    }
+
+    #ratings-card {
+        width: calc(100% - 70px);
+        aspect-ratio: 1.25;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .incident-type {
+        width: 80px;
+    }
+
+    #graph-card {
+        width: calc(100% - 70px);
+        aspect-ratio: 1.25;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    #incidents-card {
+        width: calc(100% - 70px);
+        aspect-ratio: 1;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .incidents-small {
+        width: calc(30%  - 20px);
+    }
+
+    .incidents-large {
+        width: calc(60%  - 20px);
+    }
+
+}
+
+@supports not (aspect-ratio: 1) {
+
+    #small-cards {
+        height: calc((100vw - 80px) / 4);
+    }
+
+    #incidents-card {
+        height: calc((100vw - 130px) / 3);
+    }
+
+    @media (max-width: 1024px) {
+        
+        #small-cards {
+            height: auto;
+        }
+
+        #ratings-card {
+            height: calc((100% - 70px) / 1.25);
+        }
+
+        #graph-card {
+            height: calc((100% - 70px) / 1.25);
+        }
+
+        #incidents-card {
+            height: calc(100% - 70px);
+        }
+
+    }
+
+}
