@@ -1,11 +1,13 @@
 const express = require('express')
 const app = express()
+const cors = require('cors');
 const port = 3000
 const host = '127.0.0.1';
 const sqlite3 = require('sqlite3').verbose()
 
 const { createServer } = require('node:http');
 
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -42,12 +44,21 @@ app.get('/api', (req, res) => {
 });
 
 let sql = call;
+let errorHappened = true;
 
   db.all(sql, [], (err, rows) => {
       if (err) {
-          throw err;
+        console.log('WE HAD AN ERROR');
+        res.json([]);
       }
-      res.json(rows);    
+      else
+      {
+        errorHappened = false;
+        console.log('NO ERROR DETECTED!!!');
+        res.json(rows); 
+      }
+       
+      //console.log(res.json(rows));
   });
   
   //next();

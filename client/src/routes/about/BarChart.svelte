@@ -12,7 +12,7 @@
   const height = 600; // height of the chart, in pixels
   const xPadding = 0.2; // padding between bars
   const yFormat = ''; // unit to display on y-axis ticks
-  const yLabel = Object.keys(data[0])[1]; // label for the y-axis
+  const yLabel = 'Incidents'; // label for the y-axis
   const color = 'steelblue'; // bar fill color
   const yScalefactor = 6; // number of ticks on y-yaxis
 
@@ -105,14 +105,13 @@
 
     <g class="bars">
       {#each reactiveYVals as bar, i (bar)}
-        <rect class="Bar"
+        <rect
           x={reactiveXScale(reactiveXVals[i])}
           y={reactiveYScale(reactiveYVals[i])}
           width={reactiveXScale.bandwidth()}
           height={reactiveYScale(0) - reactiveYScale(bar)}
           fill={color}
-          animate:flip={{duration: 3000}}
-          
+          animate:flip="{{duration: 3000}}"
         />
       {/each}
     </g>
@@ -175,9 +174,4 @@
     fill: black;
     text-anchor: start;
   }
-
-  .Bar {
-		transition: all 1.5s ease-in;
-	}
-
 </style>

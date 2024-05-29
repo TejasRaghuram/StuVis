@@ -5,6 +5,7 @@
 
 
 import data2 from "./components/data.json";
+import dataPie from "./components/dataPie.json"
 import lineChartData from "./components/lcd.json"
 import data3 from "./components/IncidentSchoolName.json"
 import LineChart from "./components/LineChart.svelte";
@@ -26,6 +27,11 @@ async function fetchData() {
 	
 
 }
+
+//$: barChartData = fetchData();
+
+
+
 
 //$: barChartData = fetchData();
 
