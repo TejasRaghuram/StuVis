@@ -5,23 +5,11 @@ about
     let dataBasePromptText = "return the race of all students with more than 10 absences"
     let whatGraphYouWant = "dounut chart"
 
-    import Percentgauge from './percentgauge.svelte';
+    
 
 
 
-    const APIKEY = "AIzaSyB5RcABqORxMeiTvbt4IETFLPM9hEqQNvQ"
-    import {GoogleGenerativeAI} from '@google/generative-ai';
-
-    import BarChart from './BarChart.svelte';
-    import PieChart from './PieChart.svelte';
-    import BubbleChart from './BubbleChart.svelte';
-    import DonutChart from './DonutChart.svelte'
-    // Access your API key as an environment variable (see "Set up your API key" above)
-    const genAI = new GoogleGenerativeAI(APIKEY);
-
-    const project = 'stuvis';
-
-    let message = "HII"
+    
 
     let pie = false;
     let bar = false;
@@ -31,13 +19,22 @@ about
     let dounut = false;
     let per = false;
 
-    let presentToShow = 0;
 
     let responseText;
 
+    const APIKEY = "AIzaSyB5RcABqORxMeiTvbt4IETFLPM9hEqQNvQ"
+    import {GoogleGenerativeAI} from '@google/generative-ai';
+
+    import BarChart from './BarChart.svelte';
+    import PieChart from './PieChart.svelte';
+    import BubbleChart from './BubbleChart.svelte';
+    import DonutChart from './DonutChart.svelte'
+    import Percentgauge from './percentgauge.svelte';
+    const genAI = new GoogleGenerativeAI(APIKEY);
+
+    
+
     const getData = async () => {
-        message = "222";
-        console.log("HIII");
         const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro"});
 
   
@@ -149,7 +146,6 @@ about
 </label>
 
 
-<p>{message}</p>
 <p>{JSON.stringify(responseText)}</p>
 
 
