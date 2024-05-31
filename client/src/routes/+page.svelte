@@ -18,11 +18,15 @@
                     </div>
                 </div>
             {/each} 
-        </div>
+            </div>
     </div>
     <div id="graph-card" class="card">
         <h2>Incidents Graph</h2>
-        <div id="graph"/>
+        
+        <div id="graph">
+            <LineChart></LineChart>
+        </div>
+        
     </div>
 </div>
 <div id="incidents-card" class="card" bind:clientWidth={width}>
@@ -71,6 +75,7 @@
 <script>
 
     import './page.css';
+    import LineChart from './LineChart.svelte';
 
     let width;
     

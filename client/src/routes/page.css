@@ -111,9 +111,9 @@
 }
 
 #graph {
-    width: 100%;
+    width: 74%;
     height: calc(100% - 50px);
-    background-color: rgb(255, 0, 255);
+    /*background-color: rgb(255, 0, 255);*/
 }
 
 #incidents-card {
