@@ -10,8 +10,11 @@
                 {:else}
                     {#if message.content !== "ERROR"}
                         <div class="bot-message">
-                            <BarChart data={message.content}></BarChart>
-                        </div>       
+                            <BarChart data={message.content.graph}></BarChart>
+                        </div>  
+                        <div class="message-container">
+                            <p class={message.from + " message"}>{message.content.text}</p>
+                        </div>     
                     {:else}
                         <div class="message-container">
                             <p class={message.from + " message"}>Error: Please Try Again.</p>
@@ -85,7 +88,7 @@
 
         const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro"});
         
-        let prompt = "Given a database with a table named Student with the following columns, ALL OF WHICH SHOULD BE ESCAPED WITH SQUARE BRACKETS, DO NOT MAKE UP YOUR OWN columns, return ONLY a SQLITE query that is all on one line to " + query + " in a way where the data can be directly put in a donut chart SchoolYear StudentID LastName FirstName EnrollmentStatus SchoolCode GradeLevel CurrentProgramTypeCode CalculatedRace EthnicityPrimaryCode EthnicityPrimary EthnicityStateCodes RaceCodesAsString RaceHispanic RaceAmericanIndian RaceAsian RaceBlack RacePacific RaceWhite FreeOrReducedLunch EconomicallyDisadvantaged GiftedTalented BasicSkillProgramCodesAsString ELL:IsActive ELL:LEPCode ELL:FormerELL ELL:ParentRefused ELL:LEPStartDate ELL:LEPExitDate SE:HasActiveIEP SE:HasActiveIEPOrRelatedService SE:HasActiveRelatedService SE:SpecialEdFlag SE:SelfContained SE:SpecEdStatus SE:SpecEdStatusCode SE:HasReferralInProcess Residential:Area/Neighborhood Residential:StreetName Activity:ParticipatedinSport Activity:ParticipatedinClub Conduct:HasDetentions Conduct:HasSuspensions Conduct:HasISSSuspensions Conduct:HasOSSSuspensions Conduct:HasOtherActions Grades:OnD/FList(FG) Att:Has09DayAbsLtr Att:Has15DayAbsLtr Att:Has04DayUxAbsLtr Att:Has08DayUxAbsLtr Att:Has10DayUxAbsLtr (Most of the previous were stored at 'Y' or 'N')";
+        const prompt = "Given a database with a table named Student with the following columns, ALL OF WHICH SHOULD BE ESCAPED WITH SQUARE BRACKETS, DO NOT MAKE UP YOUR OWN columns, return ONLY a SQLITE query that is all on one line to " + query + " in a way where the data can be directly put in a donut chart SchoolYear StudentID LastName FirstName EnrollmentStatus SchoolCode GradeLevel CurrentProgramTypeCode CalculatedRace EthnicityPrimaryCode EthnicityPrimary EthnicityStateCodes RaceCodesAsString RaceHispanic RaceAmericanIndian RaceAsian RaceBlack RacePacific RaceWhite FreeOrReducedLunch EconomicallyDisadvantaged GiftedTalented BasicSkillProgramCodesAsString ELL:IsActive ELL:LEPCode ELL:FormerELL ELL:ParentRefused ELL:LEPStartDate ELL:LEPExitDate SE:HasActiveIEP SE:HasActiveIEPOrRelatedService SE:HasActiveRelatedService SE:SpecialEdFlag SE:SelfContained SE:SpecEdStatus SE:SpecEdStatusCode SE:HasReferralInProcess Residential:Area/Neighborhood Residential:StreetName Activity:ParticipatedinSport Activity:ParticipatedinClub Conduct:HasDetentions Conduct:HasSuspensions Conduct:HasISSSuspensions Conduct:HasOSSSuspensions Conduct:HasOtherActions Grades:OnD/FList(FG) Att:Has09DayAbsLtr Att:Has15DayAbsLtr Att:Has04DayUxAbsLtr Att:Has08DayUxAbsLtr Att:Has10DayUxAbsLtr (Most of the previous were stored at 'Y' or 'N')";
         
         const result = await model.generateContent(prompt);
         const response = await result.response;
@@ -139,10 +142,19 @@
 
         responseText = dataF;
 
-        return responseText;
+        const prompt2 = "Given the query " + query + " that returned the following data from the South Brunswick School District in New Jearsy: " + JSON.stringify(dataF) + ", write a paragraph explaining a possible reason for the trend within a local context."
+        const result2 = await model1.generateContent(prompt2);
+        const response3 = await result2.response;
+        let rText = response3.text();
+
+        rText = rText.replaceAll("*", "");
+        console.log(rText);
+
+        return {
+            graph: responseText,
+            text: rText
+        };
     }
     
 
 </script>
-
-<button on:click={getData}>Get Data</button>
