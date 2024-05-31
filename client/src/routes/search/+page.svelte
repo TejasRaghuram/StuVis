@@ -142,7 +142,7 @@
 
         responseText = dataF;
 
-        const prompt2 = "Given the query " + query + " that returned the following data from the South Brunswick School District in New Jearsy: " + JSON.stringify(dataF) + ", write a paragraph explaining a possible reason for the trend within a local context."
+        const prompt2 = "Given the query " + query + " that returned the following data from the South Brunswick School District in New Jearsy: " + JSON.stringify(dataF) + ", write a paragraph to a South Brunswick School District admin explaining a possible reason for the trend within a local context."
         const result2 = await model1.generateContent(prompt2);
         const response3 = await result2.response;
         let rText = response3.text();
